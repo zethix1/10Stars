@@ -30,8 +30,8 @@ public class Stars10DB extends SQLiteOpenHelper {
                     COLONNE_NOM + " TEXT CHECK( LENGTH(nom) <= 15) NOT NULL," +
                     COLONNE_PRENOM + " TEXT CHECK ( LENGTH(prenom) <= 15) NOT NULL," +
                     COLONNE_EMAIL + " TEXT CHECK ( LENGTH(email) <= 25 ) NOT NULL DEFAULT 'placeholder@gmail.com'," +
-                    COLONNE_TELEPHONE + " TEXT CHECK( LENGTH(telephone) =< 25) NULL," +
-                    COLONNE_COMMENTAIRE + " TEXT)";
+                    COLONNE_TELEPHONE + " TEXT CHECK( LENGTH(telephone) <= 25) ," +
+                    COLONNE_COMMENTAIRE + " TEXT DEFAULT NULL)";
 
 
     // Nom de la table
@@ -50,27 +50,27 @@ public class Stars10DB extends SQLiteOpenHelper {
     private static final String CREATION_TABLE_CHAMBRE =
             "CREATE TABLE " + TABLE_CHAMBRE + " (" +
                     COLONNE_ID_CHAMBRE + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                    COLONNE_MAX_PERSONNE_CHAMBRE + " INTEGER NULL DEFAULT '0'," +
+                    COLONNE_MAX_PERSONNE_CHAMBRE + " INTEGER DEFAULT '0'," +
                     COLONNE_STATUT_CHAMBRE + " TEXT CHECK( statut IN ('disponible','occupe','maintenance')) NOT NULL DEFAULT 'disponible'," +
                     COLONNE_ETAGE_CHAMBRE + " INTEGER CHECK( LENGTH(etage) <= 2 ) NOT NULL," +
                     COLONNE_TYPELIT_CHAMBRE + " TEXT CHECK( typeLit IN ('simple','double') )," +
                     COLONNE_NUM_CHAMBRE + " TEXT CHECK ( LENGTH(numeroChambre) <= 5 ) NOT NULL," +
-                    COLONNE_COMMENTAIRE_CHAMBRE + " TEXT NULL DEFAULT NULL)";
+                    COLONNE_COMMENTAIRE_CHAMBRE + " TEXT DEFAULT NULL)";
 
     private static final String TABLE_RESERVATION = "reservations";
     private static final String COLONNE_ID_RESERVATION = "id";
-    private static final String COLONNE_DATEARRIVE_RESERVATION = "DateArrivee";
-    private static final String COLONNE_DATEDEPART_RESERVATION = "DateDepart";
-    private static final String COLONNE_NBINVITE_RESERVATION = "NombreInvites";
+    private static final String COLONNE_DATEARRIVE_RESERVATION = "dateArrivee";
+    private static final String COLONNE_DATEDEPART_RESERVATION = "dateDepart";
+    private static final String COLONNE_NBINVITE_RESERVATION = "nombreInvites";
 
     private static final String COLONNE_COMMENTAIRE_RESERVATION = "commentaire";
 
     private static final String CREATION_TABLE_RESERVATION =
             "CREATE TABLE " + TABLE_RESERVATION + " (" +
-                    COLONNE_ID_RESERVATION + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    COLONNE_ID_RESERVATION + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                     COLONNE_DATEARRIVE_RESERVATION + "TEXT," +
                     COLONNE_DATEDEPART_RESERVATION + " TEXT," +
-                    COLONNE_NBINVITE_RESERVATION+ " TEXT," +
+                    COLONNE_NBINVITE_RESERVATION+ " INTEGER CHECK( LENGTH(nombreInvites) <= 50 )," +
                     COLONNE_COMMENTAIRE_RESERVATION + " TEXT)";
 
     public Stars10DB(Context context) {
