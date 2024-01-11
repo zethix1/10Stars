@@ -65,13 +65,46 @@ public class Stars10DB extends SQLiteOpenHelper {
 
     private static final String COLONNE_COMMENTAIRE_RESERVATION = "commentaire";
 
+    private static final String FK_IDCHAMBRE_RESERVATION = "idChambre";
+
+    private static final String FK_IDCLIENT_RESERVATION = "idClient";
+
+
     private static final String CREATION_TABLE_RESERVATION =
             "CREATE TABLE " + TABLE_RESERVATION + " (" +
                     COLONNE_ID_RESERVATION + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                     COLONNE_DATEARRIVE_RESERVATION + "TEXT," +
                     COLONNE_DATEDEPART_RESERVATION + " TEXT," +
                     COLONNE_NBINVITE_RESERVATION+ " INTEGER CHECK( LENGTH(nombreInvites) <= 50 )," +
-                    COLONNE_COMMENTAIRE_RESERVATION + " TEXT)";
+                    COLONNE_COMMENTAIRE_RESERVATION + " TEXT," +
+                    FK_IDCHAMBRE_RESERVATION + "INTEGER," +
+                    FK_IDCLIENT_RESERVATION + "INTEGER," +
+                    "CONSTRAINT fk_idChambre " +
+                    "FOREIGN KEY ("+ FK_IDCHAMBRE_RESERVATION + ")" +
+                    "REFERENCES " + TABLE_CHAMBRE + " ("+ COLONNE_ID_CHAMBRE + ")," +
+                    "CONSTRAINT fk_idClient " +
+                    "FOREIGN KEY ("+ FK_IDCLIENT_RESERVATION + ")" +
+                    "REFERENCES " + TABLE_CLIENTS + " ("+ COLONNE_ID+ "))" ;
+
+    private static final String TABLE_MAINTENANCE = "maintenance";
+    private static final String COLONNE_ID_MAINTENANCE= "id";
+    private static final String COLONNE_DATEDEBUT_MAINTENANCE = "dateDebut";
+    private static final String COLONNE_DATEFIN_MAINTENANCE = "dateFin";
+    private static final String COLONNE_COMMENTAIRE_MAINTENANCE = "commentaire";
+
+    private static final String FK_IDCHAMBRE_MAINTENANCE = "idchambre";
+
+    private static final String CREATION_TABLE_MAINTENANCE =
+            "CREATE TABLE " + TABLE_MAINTENANCE + " (" +
+                    COLONNE_ID_MAINTENANCE + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                    COLONNE_DATEDEBUT_MAINTENANCE + "TEXT," +
+                    COLONNE_DATEFIN_MAINTENANCE+ " TEXT," +
+                    COLONNE_COMMENTAIRE_MAINTENANCE + " TEXT," +
+                    FK_IDCHAMBRE_MAINTENANCE + "INTEGER," +
+                    "CONSTRAINT fk_idChambre " +
+                    "FOREIGN KEY ("+ FK_IDCHAMBRE_MAINTENANCE + ")" +
+                    "REFERENCES " + TABLE_CHAMBRE + " ("+ COLONNE_ID_CHAMBRE + "))" ;
+
 
     public Stars10DB(Context context) {
         super(context, NOM_BASE_DE_DONNEES, null, VERSION_BASE_DE_DONNEES);
@@ -82,6 +115,8 @@ public class Stars10DB extends SQLiteOpenHelper {
         // Création de la table lors de la première exécution
         db.execSQL(CREATION_TABLE_CLIENTS);
         db.execSQL(CREATION_TABLE_RESERVATION);
+        db.execSQL(CREATION_TABLE_CHAMBRE);
+        db.execSQL(CREATION_TABLE_MAINTENANCE);
     }
 
     @Override
