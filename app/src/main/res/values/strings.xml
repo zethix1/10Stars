@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">10stars</string>
+    <string name="bModif">Modifier</string>
+    <string name="bAjout">Ajouter</string>
+    <string name="commentaire">Commentaire</string>
+    <string name="num_chambre">Numéro Chambre</string>
+    <string name="type_lit">Type Lit</string>
+    <string name="etage_chambre">Etage Chambre</string>
+    <string name="statut_chambre">Statut</string>
+    <string name="max_personne">Max Personne</string>
+    <string name="retours">Retour</string>
+    <string name="client">Client</string>
+    <string name="chambre">Chambre</string>
 </resources>

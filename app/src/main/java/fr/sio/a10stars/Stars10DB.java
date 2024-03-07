@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class Stars10DB extends SQLiteOpenHelper {
 
     // Nom de la base de données
-    private static final String NOM_BASE_DE_DONNEES = "clients.db";
+    private static final String NOM_BASE_DE_DONNEES = "stars10";
 
     // Version de la base de données
     private static final int VERSION_BASE_DE_DONNEES = 1;

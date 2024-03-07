@@ -13,6 +13,15 @@
         android:theme="@style/Theme.10stars"
         tools:targetApi="31">
         <activity
+            android:name=".Chambre.Liste_Chambre"
+            android:exported="false" />
+        <activity
+            android:name=".Chambre.ChambreMenu"
+            android:exported="false" />
+        <activity
+            android:name=".Chambre.ChambreForm"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

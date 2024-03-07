@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Chambre.ChambreForm"
+    android:orientation="vertical"
+    >
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bRetours"
+        android:text="@string/retours"
+        android:backgroundTint="@color/primaire"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lmax_personne"
+        android:text="@string/max_personne"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+    <EditText
+        android:id="@+id/max_personne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/max_personne"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lstatut_chambre"
+        android:text="@string/statut_chambre"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/statut_chambre"
+        android:hint="@string/statut_chambre"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/letage_chambre"
+        android:text="@string/etage_chambre"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etage_chambre"
+        android:hint="@string/etage_chambre"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ltype_lit"
+        android:text="@string/type_lit"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/typelit_chambre"
+        android:hint="@string/type_lit"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lnum_chambre"
+        android:text="@string/num_chambre"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/num_chambre"
+        android:hint="@string/num_chambre"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lcommentaire"
+        android:text="@string/commentaire"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/commentaire_chambre"
+        android:hint="@string/commentaire"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bModifAjout"
+        android:backgroundTint="@color/primaire"
+        />
+
+
+</LinearLayout>
