@@ -41,7 +41,7 @@
         android:textStyle="bold"
         />
 
-    <EditText
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/statut_chambre"
@@ -56,6 +56,7 @@
         android:padding="8dp"
         android:textStyle="bold"
         />
+
 
     <EditText
         android:layout_width="match_parent"
@@ -73,7 +74,7 @@
         android:padding="8dp"
         android:textStyle="bold"
         />
-    <EditText
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/typelit_chambre"

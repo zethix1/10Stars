@@ -22,11 +22,17 @@
         android:id="@+id/bAjout"
         android:text="@string/bAjout"
         />
-    <Button
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chambre2"
+        />
+    <!--<Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/bModif"
         android:id="@+id/bModif"
-        />
+        /> -->
 
 </LinearLayout>
