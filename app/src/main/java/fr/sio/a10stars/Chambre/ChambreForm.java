@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.List;
+
 import fr.sio.a10stars.R;
 import fr.sio.a10stars.Stars10DB;
 
@@ -45,6 +47,12 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
     private Stars10DB maBD;
     private SQLiteDatabase writeBD;
 
+    private Boolean ajouter;
+
+    private List<Chambre> list = ChambreMenu.list;
+
+    private Chambre chambre;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +67,7 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
         this.bRetour = findViewById(R.id.bRetours);
         this.bRetour.setOnClickListener(this);
         this.bundle = this.getIntent().getExtras();
-        Boolean ajouter = this.bundle.getBoolean("ajouter");
+        this.ajouter = this.bundle.getBoolean("ajouter");
         this.maBD = new Stars10DB(this);
         this.writeBD = this.maBD.getWritableDatabase();
         this.estatut.setOnItemSelectedListener(this);
@@ -72,9 +80,29 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
         this.type.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         this.etype.setAdapter(this.type);
         this.estatut.setAdapter(this.statut);
-        if(ajouter == false) {
-            this.bModifAjout.setText("Appliquer");
-            //Cursor cursor = this.writeBD.execSQL("select * FROM chambre WHERE id = "+ );
+        if(!ajouter) {
+            for (int i=0;i<list.size();i++) {
+                this.chambre = list.get(i);
+                if(this.chambre.getId() == Chambre.CurrentIdItem) {
+                    this.bModifAjout.setText("Appliquer");
+                    this.emax.setText(Integer.toString(this.chambre.getMaxP()));
+                    if(this.chambre.getStatut().equals("disponible")) {
+                        this.estatut.setSelection(1);
+                    } else if (this.chambre.getStatut().equals("occupe")) {
+                        this.estatut.setSelection(2);
+                    }else {
+                        this.estatut.setSelection(3);
+                    }
+                    this.eEtage.setText(Integer.toString(this.chambre.getEtage()));
+                    this.eNum.setText(this.chambre.getNum());
+                    this.ecomm.setText(this.chambre.getComm());
+                    if(this.chambre.getType().equals("simple")) {
+                        this.estatut.setSelection(1);
+                    }else {
+                        this.estatut.setSelection(2);
+                    }
+                }
+            }
         }else {
             this.bModifAjout.setText("Ajouter");
         }
@@ -86,6 +114,9 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
         this.writeBD.execSQL("INSERT INTO chambre(maxPersonne,statut,numeroChambre,etage,typeLit,commentaire)  values ('" +emax+"', '" + eStatut + "', '" + eNum + "', '" + eEtage + "', '" + eType+ "', '" + eComm + "');");
     }
 
+    public void ModifChambre(int id,String emax,String eStatut,String eEtage,String eType,String eNum,String eComm) {
+        this.writeBD.execSQL("UPDATE chambre SET maxPersonne = " + emax + " , statut = " + eStatut + " , numeroChambre = " + eNum + " , etage = " + eEtage + " , typeLit = " + eType + " , commentaire = " + eComm + " WHERE id = " + id + ";");
+    }
 
 
     @Override
@@ -93,17 +124,24 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
         if(view.getId() == R.id.bRetours) {
             this.finish();
         }else if(view.getId() == R.id.bModifAjout) {
-                        /*Cursor cursor = this.writeBD.execSQL(
-                    "INSERT INTO chambre  values('" +this.emax.getText().toString()+"', '" +
-                     this.estatut.getText().toString() + "', '" + this.eEtage.getText().toString() + "', '"
-                    + this.etype.getText().toString() + "', '" + this.eNum.getText().toString() + "', '"
-                    + this.ecomm.getText().toString() + "');");*/
-            AjoutChambre(this.emax.getText().toString(),
-                    this.statutR.toString(),
-                    this.eEtage.getText().toString(),
-                    this.typeR.toString(),
-                    this.eNum.getText().toString(),
-                    this.ecomm.getText().toString());
+            if(this.ajouter) {
+                AjoutChambre(this.emax.getText().toString(),
+                        this.statutR.toString(),
+                        this.eEtage.getText().toString(),
+                        this.typeR.toString(),
+                        this.eNum.getText().toString(),
+                        this.ecomm.getText().toString());
+                this.finish();
+            } else if (this.ajouter == false) {
+                ModifChambre(this.chambre.getId(),
+                        this.emax.getText().toString(),
+                        this.statutR.toString(),
+                        this.eEtage.getText().toString(),
+                        this.typeR.toString(),
+                        this.eNum.getText().toString(),
+                        this.ecomm.getText().toString());
+                this.finish();
+            }
         }
     }
 

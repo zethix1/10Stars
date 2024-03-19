@@ -1,6 +1,11 @@
 package fr.sio.a10stars.Chambre;
 
 public class Chambre {
+
+    private int id;
+
+    public static int CurrentIdItem;
+
     private int maxP;
 
     private String statut;
@@ -13,13 +18,33 @@ public class Chambre {
 
     private String comm;
 
-    public Chambre(int maxP, String statut, int etage, String type, String num, String comm) {
+    /*public Chambre(int maxP, String statut, int etage, String type, String num, String comm) {
         this.maxP = maxP;
         this.statut = statut;
         this.etage = etage;
         this.type = type;
         this.num = num;
         this.comm = comm;
+    }*/
+
+    public Chambre(int id,int maxP, String statut, int etage, String type, String num, String comm) {
+        this.id = id;
+        this.maxP = maxP;
+        this.statut = statut;
+        this.etage = etage;
+        this.type = type;
+        this.num = num;
+        this.comm = comm;
+        Chambre.CurrentIdItem = id;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getMaxP() {
@@ -68,5 +93,17 @@ public class Chambre {
 
     public void setComm(String comm) {
         this.comm = comm;
+    }
+
+    @Override
+    public String toString() {
+        return "Chambre{" + '\n' +
+                "maxP=" + maxP + '\n' +
+                ", statut='" + statut + '\n' +
+                ", etage=" + etage + '\n' +
+                ", type='" + type + '\n' +
+                ", num='" + num + '\n' +
+                ", comm='" + comm + '\n' +
+                '}';
     }
 }
