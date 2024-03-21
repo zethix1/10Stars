@@ -10,7 +10,7 @@ public class Stars10DB extends SQLiteOpenHelper {
     private static final String NOM_BASE_DE_DONNEES = "stars10";
 
     // Version de la base de données
-    private static final int VERSION_BASE_DE_DONNEES = 2;
+    private static final int VERSION_BASE_DE_DONNEES = 3;
 
     // Nom de la table
     private static final String TABLE_CLIENTS = "clients";
@@ -43,7 +43,9 @@ public class Stars10DB extends SQLiteOpenHelper {
     private static final String COLONNE_STATUT_CHAMBRE = "statut";
     private static final String COLONNE_NUM_CHAMBRE = "numeroChambre";
     private static final String COLONNE_ETAGE_CHAMBRE = "etage";
-    private static final String COLONNE_TYPELIT_CHAMBRE = "typeLit";
+    private static final String COLONNE_NB_LIT_SIMPLE_CHAMBRE = "nbLitSimple";
+
+    private static final String COLONNE_NB_LIT_DOUBLE_CHAMBRE = "nbLitDouble";
     private static final String COLONNE_COMMENTAIRE_CHAMBRE = "commentaire";
 
     // Requête de création de la table
@@ -53,7 +55,8 @@ public class Stars10DB extends SQLiteOpenHelper {
                     COLONNE_MAX_PERSONNE_CHAMBRE + " INTEGER DEFAULT '0'," +
                     COLONNE_STATUT_CHAMBRE + " TEXT CHECK( statut IN ('disponible','occupe','maintenance')) NOT NULL DEFAULT 'disponible'," +
                     COLONNE_ETAGE_CHAMBRE + " INTEGER NOT NULL," +
-                    COLONNE_TYPELIT_CHAMBRE + " TEXT CHECK( typeLit IN ('simple','double') )," +
+                    COLONNE_NB_LIT_SIMPLE_CHAMBRE + " INTEGER," +
+                    COLONNE_NB_LIT_DOUBLE_CHAMBRE + " INTEGER," +
                     COLONNE_NUM_CHAMBRE + " TEXT NOT NULL," +
                     COLONNE_COMMENTAIRE_CHAMBRE + " TEXT DEFAULT NULL)";
 
@@ -125,14 +128,10 @@ public class Stars10DB extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Mise à jour de la base de données (si nécessaire)
-        // Cette méthode est appelée lorsqu'une nouvelle version de la base de données est disponible.
-        db.execSQL("DROP TABLE clients;");
-        db.execSQL("DROP TABLE reservations");
-        db.execSQL("DROP TABLE chambre");
-        db.execSQL("DROP TABLE maintenance");
-        db.execSQL(CREATION_TABLE_CLIENTS);
-        db.execSQL(CREATION_TABLE_RESERVATION);
-        db.execSQL(CREATION_TABLE_CHAMBRE);
-        db.execSQL(CREATION_TABLE_MAINTENANCE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CLIENTS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_RESERVATION);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CHAMBRE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MAINTENANCE);
+        onCreate(db);
     }
 }

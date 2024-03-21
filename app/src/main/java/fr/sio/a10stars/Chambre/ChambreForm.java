@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,24 +22,21 @@ import fr.sio.a10stars.Stars10DB;
 
 public class ChambreForm extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-    private EditText emax,eEtage,eNum,ecomm;
+    private EditText emax,eEtage,eNum,ecomm,eSimple,eDouble;
 
-    private Spinner estatut,etype;
+    private Spinner estatut;
 
 
-    private Button bModifAjout,bRetour;
+    private Button bModifAjout,bRetour,bSuppr,bMaintenance;
 
     private ArrayAdapter<CharSequence> statut;
 
-    private ArrayAdapter<CharSequence> type;
 
     private Object statutR;
 
     private Object typeR;
 
     private String[] statutT = {"disponible,occupe,maintenance"};
-
-    private String[] typeT = {"simple,double"};
 
     private Bundle bundle;
 
@@ -58,27 +56,29 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chambre_form);
         this.emax = findViewById(R.id.max_personne);
-        this.estatut = findViewById(R.id.statut_chambre);
+        this.estatut = findViewById(R.id.statut_chambre_modification);
         this.eEtage = findViewById(R.id.etage_chambre);
-        this.etype = findViewById(R.id.typelit_chambre);
+        this.eSimple = findViewById(R.id.nb_lit_simple_chambre);
+        this.eDouble = findViewById(R.id.nb_lit_double_chambre);
         this.eNum = findViewById(R.id.num_chambre);
         this.ecomm = findViewById(R.id.commentaire_chambre);
         this.bModifAjout = findViewById(R.id.bModifAjout);
         this.bRetour = findViewById(R.id.bRetours);
+        this.bSuppr = findViewById(R.id.bSuppr);
         this.bRetour.setOnClickListener(this);
         this.bundle = this.getIntent().getExtras();
         this.ajouter = this.bundle.getBoolean("ajouter");
         this.maBD = new Stars10DB(this);
         this.writeBD = this.maBD.getWritableDatabase();
         this.estatut.setOnItemSelectedListener(this);
-        this.etype.setOnItemSelectedListener(this);
+        if(this.ajouter == false) {
+            this.bSuppr.setOnClickListener(this);
+        }else {
+            this.bSuppr.setVisibility(View.INVISIBLE);
+        }
 
         this.statut = ArrayAdapter.createFromResource(this,R.array.statut, com.google.android.material.R.layout.support_simple_spinner_dropdown_item);
-        this.type = ArrayAdapter.createFromResource(this,R.array.type, com.google.android.material.R.layout.support_simple_spinner_dropdown_item);
-        //this.statut = new ArrayAdapter<String>(this,R.layout.spinner,R.id.statut,statutT);
         this.statut.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-        this.type.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-        this.etype.setAdapter(this.type);
         this.estatut.setAdapter(this.statut);
         if(!ajouter) {
             for (int i=0;i<list.size();i++) {
@@ -87,20 +87,18 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
                     this.bModifAjout.setText("Appliquer");
                     this.emax.setText(Integer.toString(this.chambre.getMaxP()));
                     if(this.chambre.getStatut().equals("disponible")) {
-                        this.estatut.setSelection(1);
+                        this.estatut.setSelection(0);
                     } else if (this.chambre.getStatut().equals("occupe")) {
-                        this.estatut.setSelection(2);
+                        this.estatut.setSelection(1);
                     }else {
-                        this.estatut.setSelection(3);
+                        this.estatut.setSelection(2);
                     }
                     this.eEtage.setText(Integer.toString(this.chambre.getEtage()));
                     this.eNum.setText(this.chambre.getNum());
                     this.ecomm.setText(this.chambre.getComm());
-                    if(this.chambre.getType().equals("simple")) {
-                        this.estatut.setSelection(1);
-                    }else {
-                        this.estatut.setSelection(2);
-                    }
+                    this.eSimple.setText(this.chambre.getNb_lit_simple());
+                    this.eDouble.setText(this.chambre.getNb_lit_double());
+
                 }
             }
         }else {
@@ -110,12 +108,16 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
 
     }
 
-    public void AjoutChambre(String emax,String eStatut,String eEtage,String eType,String eNum,String eComm) {
-        this.writeBD.execSQL("INSERT INTO chambre(maxPersonne,statut,numeroChambre,etage,typeLit,commentaire)  values ('" +emax+"', '" + eStatut + "', '" + eNum + "', '" + eEtage + "', '" + eType+ "', '" + eComm + "');");
+    public void AjoutChambre(String emax,String eStatut,String nbLitSimple,String nbLitDouble,String eEtage,String eNum,String eComm) {
+        this.writeBD.execSQL("INSERT INTO chambre(maxPersonne,statut,numeroChambre,etage,nbLitSimple,nbLitDouble,commentaire)  values ('" +emax+"', '" + eStatut + "', '" + eNum + "', '" + eEtage + "', " + nbLitSimple + ", '" + nbLitDouble + "', '" + eComm + "');");
     }
 
-    public void ModifChambre(int id,String emax,String eStatut,String eEtage,String eType,String eNum,String eComm) {
-        this.writeBD.execSQL("UPDATE chambre SET maxPersonne = " + emax + " , statut = " + eStatut + " , numeroChambre = " + eNum + " , etage = " + eEtage + " , typeLit = " + eType + " , commentaire = " + eComm + " WHERE id = " + id + ";");
+    public void ModifChambre(int id,String emax,String eStatut,String nbLitSimple,String nbLitDouble,String eEtage,String eNum,String eComm) {
+        this.writeBD.execSQL("UPDATE chambre SET maxPersonne = " + emax + " , statut = '" + eStatut + " ', nbLitSimple = " + nbLitSimple + "nbLitDouble = " + nbLitDouble +" , numeroChambre = " + eNum + " , etage = " + eEtage + " , commentaire = '" + eComm + "' WHERE id = " + id + ";");
+    }
+
+    public void SupprChambre(int id) {
+        this.writeBD.execSQL("DELETE FROM chambre WHERE id = " + id + ";");
     }
 
 
@@ -127,8 +129,9 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
             if(this.ajouter) {
                 AjoutChambre(this.emax.getText().toString(),
                         this.statutR.toString(),
+                        this.eSimple.getText().toString(),
+                        this.eDouble.getText().toString(),
                         this.eEtage.getText().toString(),
-                        this.typeR.toString(),
                         this.eNum.getText().toString(),
                         this.ecomm.getText().toString());
                 this.finish();
@@ -136,20 +139,24 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
                 ModifChambre(this.chambre.getId(),
                         this.emax.getText().toString(),
                         this.statutR.toString(),
+                        this.eSimple.getText().toString(),
+                        this.eDouble.getText().toString(),
                         this.eEtage.getText().toString(),
-                        this.typeR.toString(),
                         this.eNum.getText().toString(),
                         this.ecomm.getText().toString());
                 this.finish();
             }
-        }
+        }else if(view.getId() == R.id.bSuppr) {
+            SupprChambre(this.chambre.getId());
+            this.finish();
+        }/*else if (view.getId() == R.id.bEnMaintenance) {
+
+        }*/
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        if(adapterView.getId() == R.id.typelit_chambre) {
-            this.typeR = adapterView.getItemAtPosition(i);
-        }else {
+        if(adapterView.getId() == R.id.statut_chambre_modification) {
             this.statutR = adapterView.getItemAtPosition(i);
         }
     }

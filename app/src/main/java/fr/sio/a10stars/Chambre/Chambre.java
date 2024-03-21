@@ -6,13 +6,15 @@ public class Chambre {
 
     public static int CurrentIdItem;
 
-    private int maxP;
-
     private String statut;
 
-    private int etage;
+    private int maxP;
 
-    private String type;
+    private int nb_lit_double;
+
+    private int nb_lit_simple;
+
+    private int etage;
 
     private String num;
 
@@ -27,12 +29,13 @@ public class Chambre {
         this.comm = comm;
     }*/
 
-    public Chambre(int id,int maxP, String statut, int etage, String type, String num, String comm) {
+    public Chambre(int id,int maxP,String statut, int nb_lit_simple,int nb_lit_double, int etage, String num, String comm) {
         this.id = id;
         this.maxP = maxP;
         this.statut = statut;
+        this.nb_lit_simple = nb_lit_simple;
+        this.nb_lit_double = nb_lit_double;
         this.etage = etage;
-        this.type = type;
         this.num = num;
         this.comm = comm;
         Chambre.CurrentIdItem = id;
@@ -63,6 +66,24 @@ public class Chambre {
         this.statut = statut;
     }
 
+
+
+    public int getNb_lit_double() {
+        return nb_lit_double;
+    }
+
+    public void setNb_lit_double(int nb_lit_double) {
+        this.nb_lit_double = nb_lit_double;
+    }
+
+    public int getNb_lit_simple() {
+        return nb_lit_simple;
+    }
+
+    public void setNb_lit_simple(int nb_lit_simple) {
+        this.nb_lit_simple = nb_lit_simple;
+    }
+
     public int getEtage() {
         return etage;
     }
@@ -71,13 +92,6 @@ public class Chambre {
         this.etage = etage;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
     public String getNum() {
         return num;
@@ -97,13 +111,14 @@ public class Chambre {
 
     @Override
     public String toString() {
-        return "Chambre{" + '\n' +
-                "maxP=" + maxP + '\n' +
-                ", statut='" + statut + '\n' +
-                ", etage=" + etage + '\n' +
-                ", type='" + type + '\n' +
-                ", num='" + num + '\n' +
-                ", comm='" + comm + '\n' +
+        return "Chambre{" +
+                "statut='" + statut + '\'' +
+                ", maxP=" + maxP +
+                ", nb_lit_double=" + nb_lit_double +
+                ", nb_lit_simple=" + nb_lit_simple +
+                ", etage=" + etage +
+                ", num='" + num + '\'' +
+                ", comm='" + comm + '\'' +
                 '}';
     }
 }

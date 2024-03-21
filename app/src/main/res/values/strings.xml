@@ -11,4 +11,8 @@
     <string name="retours">Retour</string>
     <string name="client">Client</string>
     <string name="chambre">Chambre</string>
+    <string name="suppr">Supprimer</string>
+    <string name="maintenance">En Maintenance</string>
+    <string name="nb_lit_simple_chambre">Nombre de Lit Simple</string>
+    <string name="nb_lit_double_chambre">Nombre de Lit Double</string>
 </resources>

@@ -44,7 +44,7 @@
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/statut_chambre"
+        android:id="@+id/statut_chambre_modification"
         android:hint="@string/statut_chambre"
         />
     <TextView
@@ -68,17 +68,35 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ltype_lit"
-        android:text="@string/type_lit"
+        android:id="@+id/nb_lit_simple2_chambre"
+        android:text="@string/nb_lit_simple_chambre"
         android:background="@color/primaire"
         android:padding="8dp"
         android:textStyle="bold"
         />
-    <Spinner
+
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/typelit_chambre"
-        android:hint="@string/type_lit"
+        android:id="@+id/nb_lit_simple_chambre"
+        android:hint="@string/nb_lit_simple_chambre"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nb_lit_double2_chambre"
+        android:text="@string/nb_lit_double_chambre"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nb_lit_double_chambre"
+        android:hint="@string/nb_lit_double_chambre"
         />
 
     <TextView
@@ -118,6 +136,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/bModifAjout"
         android:backgroundTint="@color/primaire"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bSuppr"
+        android:backgroundTint="@color/maintenance"
+        android:text="@string/suppr"
         />
 
 
