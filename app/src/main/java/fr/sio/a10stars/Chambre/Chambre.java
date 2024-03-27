@@ -42,6 +42,7 @@ public class Chambre {
     }
 
 
+
     public int getId() {
         return id;
     }

@@ -96,8 +96,8 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
                     this.eEtage.setText(Integer.toString(this.chambre.getEtage()));
                     this.eNum.setText(this.chambre.getNum());
                     this.ecomm.setText(this.chambre.getComm());
-                    this.eSimple.setText(this.chambre.getNb_lit_simple());
-                    this.eDouble.setText(this.chambre.getNb_lit_double());
+                    this.eSimple.setText(Integer.toString(this.chambre.getNb_lit_simple()));
+                    this.eDouble.setText(Integer.toString(this.chambre.getNb_lit_double()));
 
                 }
             }
@@ -113,7 +113,7 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
     }
 
     public void ModifChambre(int id,String emax,String eStatut,String nbLitSimple,String nbLitDouble,String eEtage,String eNum,String eComm) {
-        this.writeBD.execSQL("UPDATE chambre SET maxPersonne = " + emax + " , statut = '" + eStatut + " ', nbLitSimple = " + nbLitSimple + "nbLitDouble = " + nbLitDouble +" , numeroChambre = " + eNum + " , etage = " + eEtage + " , commentaire = '" + eComm + "' WHERE id = " + id + ";");
+        this.writeBD.execSQL("UPDATE chambre SET maxPersonne = " + emax + " , statut = '" + eStatut + "' , nbLitSimple = " + nbLitSimple + " , nbLitDouble = " + nbLitDouble +" , numeroChambre = " + eNum + " , etage = " + eEtage + " , commentaire = '" + eComm + "' WHERE id = " + id + ";");
     }
 
     public void SupprChambre(int id) {

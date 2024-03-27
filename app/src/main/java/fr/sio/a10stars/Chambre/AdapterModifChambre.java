@@ -41,8 +41,8 @@ public class AdapterModifChambre extends ArrayAdapter<Chambre> {
         Chambre currentChambre = getItem(position);
         if (currentChambre != null) {
             numeroChambre.setText(currentChambre.getNum());
-            nb_lit_simple.setText(currentChambre.getNb_lit_simple());
-            nb_lit_double.setText(currentChambre.getNb_lit_double());
+            nb_lit_simple.setText(String.valueOf(currentChambre.getNb_lit_simple()));
+            nb_lit_double.setText(String.valueOf(currentChambre.getNb_lit_double()));
             statut_chambre.setText(currentChambre.getStatut());
             pastille_couleur.setBackgroundColor(Color.TRANSPARENT);
             if(statut_chambre.getText().toString().equals("disponible")) {
