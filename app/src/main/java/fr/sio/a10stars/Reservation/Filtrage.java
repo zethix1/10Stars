@@ -1,4 +1,4 @@
-package fr.sio.a10stars.Chambre;
+package fr.sio.a10stars.Reservation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,20 +6,23 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.sio.a10stars.Chambre.Chambre;
 import fr.sio.a10stars.R;
 import fr.sio.a10stars.Db.Stars10DB;
 
-public class ChambreMenu extends AppCompatActivity implements View.OnClickListener {
+public class Filtrage extends AppCompatActivity implements View.OnClickListener {
 
-    private Button bModif,bAjout,bRetours,bMaintenance;
+    private Button bRetours;
 
     private Intent intent;
 
@@ -27,7 +30,6 @@ public class ChambreMenu extends AppCompatActivity implements View.OnClickListen
 
     private int maxP;
 
-    private Boolean maintenance;
 
     private String statut;
 
@@ -38,11 +40,13 @@ public class ChambreMenu extends AppCompatActivity implements View.OnClickListen
 
     private int double2;
 
-    private String num;
+    private String num,nbLitSimple,nbLitDouble,datedebut,datefin;
 
     private String comm;
 
     private ListView listView;
+
+    private Bundle bundle;
 
     private ArrayAdapter<Chambre> arrayAdapter;
 
@@ -54,23 +58,29 @@ public class ChambreMenu extends AppCompatActivity implements View.OnClickListen
 
     private Chambre chambre;
 
+    private TextView textView;
+
     @Override
     protected void onResume() {
         super.onResume();
-        this.maintenance = false;
-        findChambre(this.maintenance);
+        this.bundle = this.getIntent().getExtras();
+        this.nbLitSimple = this.bundle.getString("litSimple");
+        this.nbLitDouble =  this.bundle.getString("litDouble");
+        this.datedebut = this.bundle.getString("datedebut");
+        this.datefin = this.bundle.getString("datefin");
+        findChambre();
     }
 
 
 
-    public void findChambre(boolean maintenance) {
+    public void findChambre() {
         list = new ArrayList<>();
         Cursor cursor = null;
-        if(!maintenance) {
-            cursor = this.writeBD.rawQuery("SELECT * from chambre WHERE statut = 'disponible' OR statut = 'occupe';",null);
-
-        }else {
-            cursor = this.writeBD.rawQuery("SELECT * from chambre WHERE statut = 'maintenance';",null);
+        //Régler le fait que certaine donnée puisse etre vide
+        if(this.nbLitSimple != null && this.nbLitDouble != null) {
+            cursor = this.writeBD.rawQuery("SELECT * from chambre WHERE statut = 'disponible' AND nbLitSimple = " + this.nbLitSimple + " AND nbLitDouble = " + this.nbLitDouble + " ;",null);
+        } else if (this.nbLitSimple != null && this.nbLitDouble == "") {
+            cursor = this.writeBD.rawQuery("SELECT * from chambre WHERE statut = 'disponible' AND nbLitSimple = " + this.nbLitSimple + " ;",null);
         }
 
         if(cursor != null) {
@@ -88,47 +98,41 @@ public class ChambreMenu extends AppCompatActivity implements View.OnClickListen
             }
             cursor.close();
         }
-        this.maintenance = !this.maintenance;
-        this.bMaintenance.setText(this.maintenance ? "En Maintenance" : "Toute les Chambres");
         this.arrayAdapter.clear();
         this.arrayAdapter.addAll(list);
+        if(list.size() <= 0) {
+            this.textView.setVisibility(View.VISIBLE);
+        }
     }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chambre_menu);
-        this.bAjout = findViewById(R.id.bAjout);
-        this.maintenance = false;
-        this.listView = findViewById(R.id.chambre2);
-        //this.bModif = findViewById(R.id.bModif);
-        this.bMaintenance = findViewById(R.id.maintenance);
-        this.bMaintenance.setOnClickListener(this);
-        this.arrayAdapter = new AdapterModifChambre(this,R.layout.liste_view_chambre,new ArrayList<>());
+        setContentView(R.layout.activity_filtrage);
+        this.listView = findViewById(R.id.chambreFiltrer);
+        this.textView = findViewById(R.id.introuvable);
+        this.arrayAdapter = new AdapterSelectionChambre(this,R.layout.chambre_filtrer,new ArrayList<>());
 
         this.maBD = new Stars10DB(this);
         this.writeBD = this.maBD.getWritableDatabase();
 
-        findChambre(false);
+        this.bundle = this.getIntent().getExtras();
+        this.nbLitSimple = this.bundle.getString("litSimple");
+        this.nbLitDouble =  this.bundle.getString("litDouble");
+        this.datedebut = this.bundle.getString("datedebut");
+        this.datefin = this.bundle.getString("datefin");
+        findChambre();
         this.listView.setAdapter(this.arrayAdapter);
-        this.bRetours = findViewById(R.id.bRetours2);
-        //this.bModif.setOnClickListener(this);
-        this.bAjout.setOnClickListener(this);
+        this.bRetours = findViewById(R.id.bRetoursFiltrer);
         this.bRetours.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.bAjout) {
-            this.intent = new Intent(this, ChambreForm.class);
-            this.intent.putExtra("ajouter",true);
-            startActivity(this.intent);
-        }else if(view.getId() == R.id.bRetours2) {
+        if(view.getId() == R.id.bRetoursFiltrer) {
             this.finish();
-        }else if (view.getId() == R.id.maintenance) {
-            findChambre(this.maintenance);
         }
     }
-}
+    }

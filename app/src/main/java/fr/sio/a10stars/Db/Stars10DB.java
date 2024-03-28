@@ -1,4 +1,4 @@
-package fr.sio.a10stars;
+package fr.sio.a10stars.Db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

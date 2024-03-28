@@ -13,13 +13,22 @@
         android:theme="@style/Theme.10stars"
         tools:targetApi="31">
         <activity
-            android:name=".Chambre.Liste_Chambre"
+            android:name=".Reservation.ReservationForm"
+            android:exported="false" />
+        <activity
+            android:name=".Reservation.Filtrage"
             android:exported="false" />
         <activity
             android:name=".Chambre.ChambreMenu"
             android:exported="false" />
         <activity
             android:name=".Chambre.ChambreForm"
+            android:exported="false" />
+        <activity
+            android:name=".Client.ClientMenu"
+            android:exported="false" />
+        <activity
+            android:name=".Client.ClientForm"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

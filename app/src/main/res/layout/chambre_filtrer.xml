@@ -10,17 +10,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <View
-            android:id="@+id/pastille_couleur"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:background="@drawable/pastille_couleur" />
 
         <ImageView
             android:layout_width="150dp"
             android:layout_height="100dp"
             android:src="@drawable/hotelroom"
-            android:id="@+id/hotelRoom"
+            android:id="@+id/hotelRoomFiltrer"
             />
 
 
@@ -34,22 +29,22 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/chambre3"
+            android:id="@+id/chambre4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/nb_lit_simple"
+            android:id="@+id/nb_lit_simple_filtrer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/nb_lit_double"
+            android:id="@+id/nb_lit_double_filtrer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/commentaire"
+            android:id="@+id/commentaire_filtrer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -62,12 +57,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/numeroChambre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/statut_chambre"
+            android:id="@+id/numeroChambre_filtrer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -75,9 +65,9 @@
 
     <!-- Button at the end -->
     <Button
-        android:id="@+id/modificationChambre"
+        android:id="@+id/selection_chambre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/bModif" />
+        android:text="@string/bSelection" />
 
 </LinearLayout>

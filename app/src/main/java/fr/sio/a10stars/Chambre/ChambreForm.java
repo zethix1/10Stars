@@ -3,22 +3,19 @@ package fr.sio.a10stars.Chambre;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import java.util.List;
 
 import fr.sio.a10stars.R;
-import fr.sio.a10stars.Stars10DB;
+import fr.sio.a10stars.Db.Stars10DB;
 
 public class ChambreForm extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
@@ -71,16 +68,12 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
         this.maBD = new Stars10DB(this);
         this.writeBD = this.maBD.getWritableDatabase();
         this.estatut.setOnItemSelectedListener(this);
-        if(this.ajouter == false) {
-            this.bSuppr.setOnClickListener(this);
-        }else {
-            this.bSuppr.setVisibility(View.INVISIBLE);
-        }
 
         this.statut = ArrayAdapter.createFromResource(this,R.array.statut, com.google.android.material.R.layout.support_simple_spinner_dropdown_item);
         this.statut.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         this.estatut.setAdapter(this.statut);
         if(!ajouter) {
+            this.bSuppr.setOnClickListener(this);
             for (int i=0;i<list.size();i++) {
                 this.chambre = list.get(i);
                 if(this.chambre.getId() == Chambre.CurrentIdItem) {
@@ -102,6 +95,7 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
                 }
             }
         }else {
+            this.bSuppr.setVisibility(View.INVISIBLE);
             this.bModifAjout.setText("Ajouter");
         }
         this.bModifAjout.setOnClickListener(this);

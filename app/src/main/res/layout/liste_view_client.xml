@@ -5,16 +5,11 @@
     android:padding="2dp">
 
     <!-- ImageView and View side by side -->
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <View
-            android:id="@+id/pastille_couleur"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:background="@drawable/pastille_couleur" />
 
         <ImageView
             android:layout_width="150dp"
@@ -24,7 +19,7 @@
             />
 
 
-    </LinearLayout>
+    </LinearLayout> -->
 
     <!-- TextViews -->
     <LinearLayout
@@ -34,22 +29,22 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/chambre3"
+            android:id="@+id/client3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/nb_lit_simple"
+            android:id="@+id/nomClientMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/nb_lit_double"
+            android:id="@+id/prenomClientMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/commentaire"
+            android:id="@+id/commentaireClient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -62,12 +57,12 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/numeroChambre"
+            android:id="@+id/emailClient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/statut_chambre"
+            android:id="@+id/telephoneClient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -75,7 +70,7 @@
 
     <!-- Button at the end -->
     <Button
-        android:id="@+id/modificationChambre"
+        android:id="@+id/modificationClient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/bModif" />
