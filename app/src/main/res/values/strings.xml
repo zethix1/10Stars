@@ -25,4 +25,7 @@
     <string name="dateDebut">Date de début</string>
     <string name="dateFin">Date de fin</string>
     <string name="nbInvite">Nombre d\'invité</string>
+    <string name="recherche_chambre">Rechercher une chambre</string>
+    <string name="nbAdulte">Nombre d\'adulte</string>
+    <string name="nbEnfant">Nombre d\'enfant</string>
 </resources>

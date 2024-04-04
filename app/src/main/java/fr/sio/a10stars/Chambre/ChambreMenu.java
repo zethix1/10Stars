@@ -1,6 +1,7 @@
 package fr.sio.a10stars.Chambre;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,7 +18,7 @@ import java.util.List;
 import fr.sio.a10stars.R;
 import fr.sio.a10stars.Db.Stars10DB;
 
-public class ChambreMenu extends AppCompatActivity implements View.OnClickListener {
+public class ChambreMenu extends AppCompatActivity implements View.OnClickListener, SearchView.OnQueryTextListener {
 
     private Button bModif,bAjout,bRetours,bMaintenance;
 
@@ -54,6 +55,8 @@ public class ChambreMenu extends AppCompatActivity implements View.OnClickListen
 
     private Chambre chambre;
 
+    private SearchView search_chambre;
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -62,15 +65,42 @@ public class ChambreMenu extends AppCompatActivity implements View.OnClickListen
     }
 
 
+    public void searchChambre(boolean maintenance,String query) {
+        list = new ArrayList<>();
+        Cursor cursor = null;
+        if(!maintenance) {
+            cursor = this.writeBD.rawQuery("SELECT * from chambre WHERE (statut = 'disponible' OR statut = 'occupe') AND numeroChambre LIKE '%" + query + "%' ;",null);
+        }else {
+            cursor = this.writeBD.rawQuery("SELECT * from chambre WHERE (statut = 'maintenance') AND numeroChambre LIKE '%" + query + "%' ;",null);
+        }
+
+        if(cursor != null) {
+            while (cursor.moveToNext()) {
+                this.id = cursor.getInt(0);
+                this.maxP = cursor.getInt(1);
+                this.statut = cursor.getString(2);
+                this.etage = cursor.getInt(3);
+                this.simple = cursor.getInt(4);
+                this.double2 = cursor.getInt(5);
+                this.num = cursor.getString(6);
+                this.comm = cursor.getString(7);
+                this.chambre = new Chambre(this.id,this.maxP,this.statut,this.simple,this.double2,this.etage,this.num,this.comm);
+                list.add(chambre);
+            }
+            cursor.close();
+        }
+        this.arrayAdapter.clear();
+        this.arrayAdapter.addAll(list);
+    }
 
     public void findChambre(boolean maintenance) {
         list = new ArrayList<>();
         Cursor cursor = null;
         if(!maintenance) {
-            cursor = this.writeBD.rawQuery("SELECT * from chambre WHERE statut = 'disponible' OR statut = 'occupe';",null);
+            cursor = this.writeBD.rawQuery("SELECT * from chambre WHERE statut = 'disponible' OR statut = 'occupe' ;",null);
 
         }else {
-            cursor = this.writeBD.rawQuery("SELECT * from chambre WHERE statut = 'maintenance';",null);
+            cursor = this.writeBD.rawQuery("SELECT * from chambre WHERE statut = 'maintenance' ;",null);
         }
 
         if(cursor != null) {
@@ -106,6 +136,7 @@ public class ChambreMenu extends AppCompatActivity implements View.OnClickListen
         this.bMaintenance = findViewById(R.id.maintenance);
         this.bMaintenance.setOnClickListener(this);
         this.arrayAdapter = new AdapterModifChambre(this,R.layout.liste_view_chambre,new ArrayList<>());
+        this.search_chambre = findViewById(R.id.search_chambre);
 
         this.maBD = new Stars10DB(this);
         this.writeBD = this.maBD.getWritableDatabase();
@@ -116,6 +147,7 @@ public class ChambreMenu extends AppCompatActivity implements View.OnClickListen
         //this.bModif.setOnClickListener(this);
         this.bAjout.setOnClickListener(this);
         this.bRetours.setOnClickListener(this);
+        this.search_chambre.setOnQueryTextListener(this);
 
     }
 
@@ -130,5 +162,16 @@ public class ChambreMenu extends AppCompatActivity implements View.OnClickListen
         }else if (view.getId() == R.id.maintenance) {
             findChambre(this.maintenance);
         }
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        searchChambre(!this.maintenance,newText);
+        return true;
     }
 }

@@ -23,6 +23,11 @@
         android:text="@string/bAjout"
         />
 
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_client"
+        />
 
     <ListView
         android:layout_width="wrap_content"

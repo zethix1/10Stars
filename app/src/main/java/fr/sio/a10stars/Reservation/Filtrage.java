@@ -76,11 +76,12 @@ public class Filtrage extends AppCompatActivity implements View.OnClickListener 
     public void findChambre() {
         list = new ArrayList<>();
         Cursor cursor = null;
-        //Régler le fait que certaine donnée puisse etre vide
-        if(this.nbLitSimple != null && this.nbLitDouble != null) {
+        if(!this.nbLitSimple.equals("") && !this.nbLitDouble.equals("")) {
             cursor = this.writeBD.rawQuery("SELECT * from chambre WHERE statut = 'disponible' AND nbLitSimple = " + this.nbLitSimple + " AND nbLitDouble = " + this.nbLitDouble + " ;",null);
-        } else if (this.nbLitSimple != null && this.nbLitDouble == "") {
+        } else if (!this.nbLitSimple.equals("") && this.nbLitDouble.equals("")) {
             cursor = this.writeBD.rawQuery("SELECT * from chambre WHERE statut = 'disponible' AND nbLitSimple = " + this.nbLitSimple + " ;",null);
+        }else if(this.nbLitSimple.equals("") && !this.nbLitDouble.equals("")) {
+            cursor = this.writeBD.rawQuery("SELECT * from chambre WHERE statut = 'disponible' AND nbLitDouble = " + this.nbLitDouble + " ;",null);
         }
 
         if(cursor != null) {

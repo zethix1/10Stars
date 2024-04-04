@@ -30,6 +30,13 @@
         android:id="@+id/maintenance"
         />
 
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_chambre"
+        android:queryHint="@string/recherche_chambre"
+        />
+
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

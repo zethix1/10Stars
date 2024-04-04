@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Reservation.ReservationForm"
-    android:orientation="vertical"
     >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
 
     <Button
         android:layout_width="wrap_content"
@@ -19,8 +24,117 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/lnumChambreReserv"
+        android:text="@string/num_chambre"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tnumChambreReserv"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lnbLitSimple_reserv"
+        android:text="@string/nb_lit_simple_chambre"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tnbLitSimple_reserv"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lnbLitDouble_reserv"
+        android:text="@string/nb_lit_double_chambre"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tnbLitSDouble_reserv"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lnbAdulte"
+        android:text="@string/nbAdulte"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/eNbNombreAdulte"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lnbEnfant"
+        android:text="@string/nbEnfant"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/eNbNombreEnfant"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lMaxPersonneReserv"
+        android:text="@string/max_personne"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tnbMaxPersonneReserv"
+        android:text="0"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/ldateDebut"
         android:text="@string/dateDebut"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
         />
     <!--Pour les dates faire plutot avec les spinner de la main activity pour etre sur que on récupére une date sous un format de date -->
     <EditText
@@ -35,6 +149,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/ldateFin"
         android:text="@string/dateFin"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
         />
     <EditText
         android:layout_width="match_parent"
@@ -48,6 +165,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/lnbInvite"
         android:text="@string/nbInvite"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
         />
     <EditText
         android:layout_width="match_parent"
@@ -61,6 +181,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/lcommentaireReservation"
         android:text="@string/commentaire"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
         />
     <EditText
         android:layout_width="match_parent"
@@ -69,5 +192,15 @@
         android:hint="@string/commentaire"
         />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bAjout"
+            android:id="@+id/bAjoutReserv"
+            android:backgroundTint="@color/primaire"
+            />
 
-</LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
