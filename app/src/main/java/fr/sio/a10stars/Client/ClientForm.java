@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -99,6 +100,7 @@ public class ClientForm extends AppCompatActivity implements View.OnClickListene
                         this.eEmail.getText().toString(),
                         this.etelephone.getText().toString(),
                         this.ecomm.getText().toString());
+                Toast.makeText(this,"Client crée avec succèe",Toast.LENGTH_SHORT).show();
                 this.finish();
             } else if (!this.ajouter) {
                 ModifClient(this.client.getId(),
@@ -107,10 +109,12 @@ public class ClientForm extends AppCompatActivity implements View.OnClickListene
                         this.etelephone.getText().toString(),
                         this.eEmail.getText().toString(),
                         this.ecomm.getText().toString());
+                Toast.makeText(this,"Client modifié avec succèe",Toast.LENGTH_SHORT).show();
                 this.finish();
             }
         }else if(view.getId() == R.id.bSupprClient) {
             SupprClient(this.client.getId());
+            Toast.makeText(this,"Client supprimé avec succèe",Toast.LENGTH_SHORT).show();
             this.finish();
         }
     }

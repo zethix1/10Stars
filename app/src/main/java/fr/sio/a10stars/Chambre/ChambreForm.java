@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -128,8 +129,9 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
                         this.eEtage.getText().toString(),
                         this.eNum.getText().toString(),
                         this.ecomm.getText().toString());
+                Toast.makeText(this,"Chambre crée avec succèe",Toast.LENGTH_SHORT).show();
                 this.finish();
-            } else if (this.ajouter == false) {
+            } else if (!this.ajouter) {
                 ModifChambre(this.chambre.getId(),
                         this.emax.getText().toString(),
                         this.statutR.toString(),
@@ -138,10 +140,12 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
                         this.eEtage.getText().toString(),
                         this.eNum.getText().toString(),
                         this.ecomm.getText().toString());
+                Toast.makeText(this,"Chambre modifié avec succèe",Toast.LENGTH_SHORT).show();
                 this.finish();
             }
         }else if(view.getId() == R.id.bSuppr) {
             SupprChambre(this.chambre.getId());
+            Toast.makeText(this,"Client supprimé avec succèe",Toast.LENGTH_SHORT).show();
             this.finish();
         }/*else if (view.getId() == R.id.bEnMaintenance) {
 

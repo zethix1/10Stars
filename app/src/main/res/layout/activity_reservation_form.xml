@@ -89,6 +89,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/eNbNombreAdulte"
+        android:text="0"
         />
 
     <TextView
@@ -105,6 +106,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/eNbNombreEnfant"
+        android:text="0"
         />
 
     <TextView
@@ -191,6 +193,12 @@
         android:id="@+id/commentaire_reservation"
         android:hint="@string/commentaire"
         />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/azertyui"
+            />
 
         <Button
             android:layout_width="match_parent"
