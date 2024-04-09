@@ -2,6 +2,7 @@ package fr.sio.a10stars.Chambre;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -28,6 +29,8 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
     private Button bModifAjout,bRetour,bSuppr,bMaintenance;
 
     private ArrayAdapter<CharSequence> statut;
+
+    private ProgressDialog progressDialog;
 
 
     private Object statutR;
@@ -118,6 +121,10 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
+        this.progressDialog = new ProgressDialog(this);
+        this.progressDialog.setMessage("traitement de la requete");
+        this.progressDialog.setCancelable(false);
+        this.progressDialog.show();
         if(view.getId() == R.id.bRetours) {
             this.finish();
         }else if(view.getId() == R.id.bModifAjout) {
@@ -129,6 +136,7 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
                         this.eEtage.getText().toString(),
                         this.eNum.getText().toString(),
                         this.ecomm.getText().toString());
+                this.progressDialog.dismiss();
                 Toast.makeText(this,"Chambre crée avec succèe",Toast.LENGTH_SHORT).show();
                 this.finish();
             } else if (!this.ajouter) {
@@ -140,11 +148,13 @@ public class ChambreForm extends AppCompatActivity implements View.OnClickListen
                         this.eEtage.getText().toString(),
                         this.eNum.getText().toString(),
                         this.ecomm.getText().toString());
+                this.progressDialog.dismiss();
                 Toast.makeText(this,"Chambre modifié avec succèe",Toast.LENGTH_SHORT).show();
                 this.finish();
             }
         }else if(view.getId() == R.id.bSuppr) {
             SupprChambre(this.chambre.getId());
+            this.progressDialog.dismiss();
             Toast.makeText(this,"Client supprimé avec succèe",Toast.LENGTH_SHORT).show();
             this.finish();
         }/*else if (view.getId() == R.id.bEnMaintenance) {

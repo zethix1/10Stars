@@ -1,5 +1,6 @@
 package fr.sio.a10stars.Client;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -34,6 +35,8 @@ public class ClientForm extends AppCompatActivity implements View.OnClickListene
     private Boolean ajouter;
 
     private List<Client> list = ClientMenu.list;
+
+    private ProgressDialog progressDialog;
 
     private Client client;
 
@@ -91,6 +94,10 @@ public class ClientForm extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
+        this.progressDialog = new ProgressDialog(this);
+        this.progressDialog.setMessage("traitement de la requete");
+        this.progressDialog.setCancelable(false);
+        this.progressDialog.show();
         if(view.getId() == R.id.bRetoursClientForm) {
             this.finish();
         }else if(view.getId() == R.id.bModifAjoutClient) {
@@ -100,6 +107,7 @@ public class ClientForm extends AppCompatActivity implements View.OnClickListene
                         this.eEmail.getText().toString(),
                         this.etelephone.getText().toString(),
                         this.ecomm.getText().toString());
+                this.progressDialog.dismiss();
                 Toast.makeText(this,"Client crée avec succèe",Toast.LENGTH_SHORT).show();
                 this.finish();
             } else if (!this.ajouter) {
@@ -109,11 +117,13 @@ public class ClientForm extends AppCompatActivity implements View.OnClickListene
                         this.etelephone.getText().toString(),
                         this.eEmail.getText().toString(),
                         this.ecomm.getText().toString());
+                this.progressDialog.dismiss();
                 Toast.makeText(this,"Client modifié avec succèe",Toast.LENGTH_SHORT).show();
                 this.finish();
             }
         }else if(view.getId() == R.id.bSupprClient) {
             SupprClient(this.client.getId());
+            this.progressDialog.dismiss();
             Toast.makeText(this,"Client supprimé avec succèe",Toast.LENGTH_SHORT).show();
             this.finish();
         }
