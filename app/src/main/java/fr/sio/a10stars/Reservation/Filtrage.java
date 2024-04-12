@@ -40,7 +40,7 @@ public class Filtrage extends AppCompatActivity implements View.OnClickListener 
 
     private int double2;
 
-    private String num,nbLitSimple,nbLitDouble,datedebut,datefin;
+    private String num,nbLitSimple,nbLitDouble;
 
     private String comm;
 
@@ -66,8 +66,8 @@ public class Filtrage extends AppCompatActivity implements View.OnClickListener 
         this.bundle = this.getIntent().getExtras();
         this.nbLitSimple = this.bundle.getString("litSimple");
         this.nbLitDouble =  this.bundle.getString("litDouble");
-        this.datedebut = this.bundle.getString("datedebut");
-        this.datefin = this.bundle.getString("datefin");
+        Reservation.dateDebut = this.bundle.getString("datedebut");
+        Reservation.dateFin = this.bundle.getString("datefin");
         findChambre();
     }
 
@@ -121,8 +121,8 @@ public class Filtrage extends AppCompatActivity implements View.OnClickListener 
         this.bundle = this.getIntent().getExtras();
         this.nbLitSimple = this.bundle.getString("litSimple");
         this.nbLitDouble =  this.bundle.getString("litDouble");
-        this.datedebut = this.bundle.getString("datedebut");
-        this.datefin = this.bundle.getString("datefin");
+        Reservation.dateDebut = this.bundle.getString("datedebut");
+        Reservation.dateFin = this.bundle.getString("datefin");
         findChambre();
         this.listView.setAdapter(this.arrayAdapter);
         this.bRetours = findViewById(R.id.bRetoursFiltrer);

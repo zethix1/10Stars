@@ -178,6 +178,24 @@
         android:hint="@string/nbInvite"
         />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lclient_reservation"
+            android:text="@string/client"
+            android:background="@color/primaire"
+            android:padding="8dp"
+            android:textStyle="bold"
+            />
+
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/client_spinner_reservation"
+            android:padding="2dp"
+            />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -187,6 +205,8 @@
         android:padding="8dp"
         android:textStyle="bold"
         />
+
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -194,11 +214,6 @@
         android:hint="@string/commentaire"
         />
 
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/azertyui"
-            />
 
         <Button
             android:layout_width="match_parent"

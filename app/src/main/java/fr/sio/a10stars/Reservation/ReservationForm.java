@@ -8,20 +8,29 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import fr.sio.a10stars.Chambre.Chambre;
+import fr.sio.a10stars.Client.Client;
 import fr.sio.a10stars.Db.Stars10DB;
 import fr.sio.a10stars.R;
 
-public class ReservationForm extends AppCompatActivity implements View.OnClickListener, TextWatcher {
+public class ReservationForm extends AppCompatActivity implements View.OnClickListener, TextWatcher, AdapterView.OnItemSelectedListener {
 
     private Button bRetours,bAjout;
+
+    private Spinner sClient;
 
     private TextView tNbLitSimple,tNbLitDouble,tNumChambre,tMaxP;
 
@@ -33,7 +42,13 @@ public class ReservationForm extends AppCompatActivity implements View.OnClickLi
 
     private SQLiteDatabase writeBD;
 
-    private int etage,id,maxP;
+    private ArrayAdapter<String> client;
+
+    private ArrayList<String> clientA;
+
+    private int etage,id,maxP,idClient,idClientMap;
+
+    private Map<String,Integer> clientMap = new HashMap<>();
 
     private int simple;
 
@@ -41,7 +56,7 @@ public class ReservationForm extends AppCompatActivity implements View.OnClickLi
 
     private String num,statut;
 
-    private String comm;
+    private String comm,nomC,prenomC;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +77,36 @@ public class ReservationForm extends AppCompatActivity implements View.OnClickLi
         this.eNbEnfant.setFilters(new InputFilter[]{new MaxLengthFilter(maxLength)});
         this.bAjout = findViewById(R.id.bAjoutReserv);
         this.bAjout.setOnClickListener(this);
+        this.sClient = findViewById(R.id.client_spinner_reservation);
+        this.sClient.setOnItemSelectedListener(this);
 
         this.maBD = new Stars10DB(this);
         this.writeBD = this.maBD.getWritableDatabase();
+        findClient();
+        this.client = new ArrayAdapter<>(this,R.layout.spinner_client,this.clientA);
+        this.client.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        this.sClient.setAdapter(this.client);
+
         findChambre();
+    }
+
+    public void findClient() {
+        Cursor cursor = this.writeBD.rawQuery("SELECT id,nom,prenom from clients ;",null);
+        this.clientA = new ArrayList<>();
+
+        this.clientA.add("pas de client disponible");
+        if(cursor != null) {
+            while (cursor.moveToNext()) {
+                this.clientA.clear();
+                this.idClient = cursor.getInt(0);
+                this.nomC = cursor.getString(1);
+                this.prenomC = cursor.getString(2);
+                String nomComplet = this.nomC + " " + this.prenomC;
+                this.clientA.add(nomComplet);
+                this.clientMap.put(nomComplet,this.idClient);
+            }
+            cursor.close();
+        }
     }
 
     public void findChambre() {
@@ -89,10 +130,16 @@ public class ReservationForm extends AppCompatActivity implements View.OnClickLi
         this.tNbLitDouble.setText(Integer.toString(this.chambre.getNb_lit_double()));
         this.tNbLitSimple.setText(Integer.toString(this.chambre.getNb_lit_simple()));
     }
+
+    public void ajoutReservation(String dateArrivee,String dateDepart,String nombreInvites,String comm,int idCli,int idCham) {
+        this.writeBD.rawQuery("INSERT INTO reservations(dateArrivee,dateDepart,nombreInvites,commentaire,idChambre,idClient) values("+dateArrivee +" , "+dateDepart +" , " + nombreInvites + " , "+comm+" , '" + idCham+"' , '"+idCham+"');",null);
+    }
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.bRetoursReservation) {
             this.finish();
+        } else if (view.getId() == R.id.bAjoutReserv) {
+            ajoutReservation(Reservation.dateDebut,Reservation.dateFin,"0",this.comm,this.id,this.idClientMap);
         }
     }
 
@@ -120,6 +167,18 @@ public class ReservationForm extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void afterTextChanged(Editable editable) {
+
+    }
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String nomClient = adapterView.getItemAtPosition(i).toString();
+        if(nomClient != null) {
+            this.idClientMap = this.clientMap.get(nomClient);
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
 }

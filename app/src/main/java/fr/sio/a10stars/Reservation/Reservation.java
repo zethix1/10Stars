@@ -4,15 +4,17 @@ public class Reservation {
 
     private int id,nbInvite,fkChambre,fkClient;
 
-    private String dateDebut,dateFin,comm;
+    private String comm;
+
+    public static String dateDebut,dateFin;
 
     public Reservation(int id, int nbInvite, int fkChambre, int fkClient, String dateDebut, String dateFin, String comm) {
         this.id = id;
         this.nbInvite = nbInvite;
         this.fkChambre = fkChambre;
         this.fkClient = fkClient;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
+        Reservation.dateDebut = dateDebut;
+        Reservation.dateFin = dateFin;
         this.comm = comm;
     }
 
@@ -48,21 +50,6 @@ public class Reservation {
         this.fkClient = fkClient;
     }
 
-    public String getDateDebut() {
-        return dateDebut;
-    }
-
-    public void setDateDebut(String dateDebut) {
-        this.dateDebut = dateDebut;
-    }
-
-    public String getDateFin() {
-        return dateFin;
-    }
-
-    public void setDateFin(String dateFin) {
-        this.dateFin = dateFin;
-    }
 
     public String getComm() {
         return comm;
@@ -78,8 +65,8 @@ public class Reservation {
                 "nbInvite=" + nbInvite +
                 ", fkChambre=" + fkChambre +
                 ", fkClient=" + fkClient +
-                ", dateDebut='" + dateDebut + '\'' +
-                ", dateFin='" + dateFin + '\'' +
+                ", dateDebut='" + Reservation.dateDebut + '\'' +
+                ", dateFin='" + Reservation.dateFin + '\'' +
                 ", comm='" + comm + '\'' +
                 '}';
     }
