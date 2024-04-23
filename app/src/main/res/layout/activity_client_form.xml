@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.Chambre.ChambreForm"
+    android:orientation="vertical"
+    >
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bRetoursClientForm"
+        android:text="@string/retours"
+        android:backgroundTint="@color/primaire"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/obligatoireReserv"
+        android:text="@string/obligatoire"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lnom"
+        android:text="@string/nom_oblig"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+    <EditText
+        android:id="@+id/nom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/nom"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lprenom"
+        android:text="@string/prenom_oblig"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/prenom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/prenom"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lemail"
+        android:text="@string/email"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/email"
+        android:hint="@string/email_oblig"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ltelephone"
+        android:text="@string/telephone"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/telephone"
+        android:hint="@string/telephone"
+        android:inputType="phone"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lcommentaireClient"
+        android:text="@string/commentaire"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/commentaire_client"
+        android:hint="@string/commentaire"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bModifAjoutClient"
+        android:backgroundTint="@color/primaire"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bSupprClient"
+        android:backgroundTint="@color/maintenance"
+        android:text="@string/suppr"
+        />
+
+
+</LinearLayout>

@@ -1,0 +1,105 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="2dp">
+
+    <!-- ImageView and View side by side -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:src="@drawable/hotelroom"
+            android:id="@+id/hotelRoomFiltrer"
+            />
+
+
+    </LinearLayout>
+
+    <!-- TextViews -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lNbLitSimpleFiltreMenu"
+            android:text="@string/nb_lit_simple_chambre_menu" />
+
+        <TextView
+            android:id="@+id/nb_lit_simple_filtrer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lNbLitDoubleFiltreMenu"
+            android:text="@string/nb_lit_double_chambre_menu" />
+
+        <TextView
+            android:id="@+id/nb_lit_double_filtrer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lCommentaireFiltreMenu"
+            android:text="@string/commentaire_menu" />
+
+        <TextView
+            android:id="@+id/commentaire_filtrer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <!-- TextViews on the right side -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lNumeroFiltreMenu"
+            android:text="@string/numChambre_menu" />
+
+        <TextView
+            android:id="@+id/numeroChambre_filtrer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <!-- Button at the end -->
+    <Button
+        android:id="@+id/selection_chambre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bSelection" />
+
+</LinearLayout>

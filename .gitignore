@@ -112,3 +112,26 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
+/app/src/main/res/mipmap-mdpi/ic_launcher.png
+/app/src/main/res/mipmap-hdpi/ic_launcher.png
+/app/src/main/res/mipmap-xhdpi/ic_launcher.png
+/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
+/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+/app/src/main/ic_launcher-playstore.png
+/app/src/main/res/mipmap-hdpi/ic_launcher_background.png
+/app/src/main/res/mipmap-mdpi/ic_launcher_background.png
+/app/src/main/res/mipmap-xhdpi/ic_launcher_background.png
+/app/src/main/res/mipmap-xxhdpi/ic_launcher_background.png
+/app/src/main/res/mipmap-xxxhdpi/ic_launcher_background.png
+/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png
+/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png
+/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png
+/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png
+/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png
+/app/src/main/res/mipmap-hdpi/ic_launcher_round.png
+/app/src/main/res/mipmap-mdpi/ic_launcher_round.png
+/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png
+/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png
+/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png
+/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml

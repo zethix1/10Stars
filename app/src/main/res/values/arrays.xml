@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="statut">
+    <item>disponible</item>
+    <item>occupe</item>
+    <item>maintenance</item>
+    </string-array>
+    <string-array name="type">
+        <item>simple</item>
+        <item>double</item>
+    </string-array>
+</resources>

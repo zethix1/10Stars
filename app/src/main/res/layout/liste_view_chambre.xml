@@ -1,0 +1,131 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="2dp">
+
+    <!-- ImageView and View side by side -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/pastille_couleur"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:background="@drawable/pastille_couleur" />
+
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:src="@drawable/hotelroom"
+            android:id="@+id/hotelRoom"
+            />
+
+    </LinearLayout>
+
+
+    <!-- TextViews -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lNbLitSimpleChambreMenu"
+            android:text="@string/nb_lit_simple_chambre_menu" />
+
+        <TextView
+            android:id="@+id/nb_lit_simple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lNbLitDoubleChambreMenu"
+                android:text="@string/nb_lit_double_chambre_menu" />
+
+            <TextView
+                android:id="@+id/nb_lit_double"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lCommentaireChambreMenu"
+                android:text="@string/commentaire_menu" />
+
+            <TextView
+                android:id="@+id/commentaire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+
+    <!-- TextViews on the right side -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lNumeroChambreMenu"
+                android:text="@string/numChambre_menu" />
+
+        <TextView
+            android:id="@+id/numeroChambre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lStatutChambreMenu"
+                android:text="@string/statut_menu" />
+
+        <TextView
+            android:id="@+id/statut_chambre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <!-- Button at the end -->
+    <Button
+        android:id="@+id/modificationChambre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bModif" />
+
+</LinearLayout>
