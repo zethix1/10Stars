@@ -13,25 +13,40 @@
         android:theme="@style/Theme.10stars"
         tools:targetApi="31">
         <activity
-            android:name=".Reservation.ReservationForm"
+            android:name=".View.Historique.HistoriqueMenu"
             android:exported="false" />
         <activity
-            android:name=".Reservation.Filtrage"
+            android:name=".View.Historique.HistoriqueForm"
             android:exported="false" />
         <activity
-            android:name=".Chambre.ChambreMenu"
+            android:name=".View.Maintenance.MaintenanceMenu"
             android:exported="false" />
         <activity
-            android:name=".Chambre.ChambreForm"
+            android:name=".View.Maintenance.MaintenanceForm"
             android:exported="false" />
         <activity
-            android:name=".Client.ClientMenu"
+            android:name=".View.Reservation.Filtrage"
             android:exported="false" />
         <activity
-            android:name=".Client.ClientForm"
+            android:name=".View.Reservation.ReservationForm"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".View.Reservation.ReservationMenu"
+            android:exported="false" />
+        <activity
+            android:name=".View.Chambre.ChambreMenu"
+            android:exported="false" />
+        <activity
+            android:name=".View.Chambre.ChambreForm"
+            android:exported="false" />
+        <activity
+            android:name=".View.Client.ClientMenu"
+            android:exported="false" />
+        <activity
+            android:name=".View.Client.ClientForm"
+            android:exported="false" />
+        <activity
+            android:name=".View.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Chambre.ChambreMenu"
+    tools:context=".View.Chambre.ChambreMenu"
     android:orientation="vertical"
     >
 
@@ -30,11 +30,15 @@
         android:id="@+id/maintenance"
         />
 
-    <androidx.appcompat.widget.SearchView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/search_chambre"
-        android:queryHint="@string/recherche_chambre"
+        android:text="@string/chambre_liste"
+        android:id="@+id/listeChambre"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
         />
 
     <ListView
@@ -42,11 +46,5 @@
         android:layout_height="wrap_content"
         android:id="@+id/chambre2"
         />
-    <!--<Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/bModif"
-        android:id="@+id/bModif"
-        /> -->
 
 </LinearLayout>

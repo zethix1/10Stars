@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Chambre.ChambreMenu"
+    tools:context=".View.Chambre.ChambreMenu"
     android:orientation="vertical"
     >
 
@@ -23,10 +23,15 @@
         android:text="@string/bAjout"
         />
 
-    <androidx.appcompat.widget.SearchView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/search_client"
+        android:text="@string/client_liste"
+        android:id="@+id/listeClient"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
         />
 
     <ListView

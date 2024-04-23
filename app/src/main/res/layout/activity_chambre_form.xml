@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Chambre.ChambreForm"
+    tools:context=".View.Chambre.ChambreForm"
     android:orientation="vertical"
     >
 
@@ -19,8 +19,15 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/obligatoireReserv"
+        android:text="@string/obligatoire"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/lmax_personne"
-        android:text="@string/max_personne"
+        android:text="@string/max_personne_oblig"
         android:background="@color/primaire"
         android:padding="8dp"
         android:textStyle="bold"
@@ -30,6 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/max_personne"
+        android:inputType="number"
         />
     <TextView
         android:layout_width="match_parent"
@@ -51,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/letage_chambre"
-        android:text="@string/etage_chambre"
+        android:text="@string/etage_chambre_oblig"
         android:background="@color/primaire"
         android:padding="8dp"
         android:textStyle="bold"
@@ -63,13 +71,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/etage_chambre"
         android:hint="@string/etage_chambre"
+        android:inputType="number"
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/nb_lit_simple2_chambre"
-        android:text="@string/nb_lit_simple_chambre"
+        android:text="@string/nb_lit_simple_chambre_oblig"
         android:background="@color/primaire"
         android:padding="8dp"
         android:textStyle="bold"
@@ -80,13 +89,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/nb_lit_simple_chambre"
         android:hint="@string/nb_lit_simple_chambre"
+        android:inputType="number"
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/nb_lit_double2_chambre"
-        android:text="@string/nb_lit_double_chambre"
+        android:text="@string/nb_lit_double_chambre_oblig"
         android:background="@color/primaire"
         android:padding="8dp"
         android:textStyle="bold"
@@ -97,13 +107,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/nb_lit_double_chambre"
         android:hint="@string/nb_lit_double_chambre"
+        android:inputType="number"
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lnum_chambre"
-        android:text="@string/num_chambre"
+        android:text="@string/num_chambre_oblig"
         android:background="@color/primaire"
         android:padding="8dp"
         android:textStyle="bold"

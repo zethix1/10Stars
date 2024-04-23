@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Reservation.ReservationForm"
+    tools:context=".View.Reservation.ReservationForm"
     >
 
     <LinearLayout
@@ -20,6 +20,13 @@
         android:text="@string/retours"
         android:backgroundTint="@color/primaire"
         />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/obligatoireReserv"
+            android:text="@string/obligatoire"
+            />
 
     <TextView
         android:layout_width="match_parent"
@@ -79,7 +86,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lnbAdulte"
-        android:text="@string/nbAdulte"
+        android:text="@string/nbAdulte_oblig"
         android:background="@color/primaire"
         android:padding="8dp"
         android:textStyle="bold"
@@ -90,13 +97,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/eNbNombreAdulte"
         android:text="0"
+        android:inputType="number"
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lnbEnfant"
-        android:text="@string/nbEnfant"
+        android:text="@string/nbEnfant_oblig"
         android:background="@color/primaire"
         android:padding="8dp"
         android:textStyle="bold"
@@ -107,12 +115,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/eNbNombreEnfant"
         android:text="0"
+        android:inputType="number"
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lMaxPersonneReserv"
+        android:id="@+id/lMaxPersonneChambreReserv"
         android:text="@string/max_personne"
         android:background="@color/primaire"
         android:padding="8dp"
@@ -122,8 +131,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tnbMaxPersonneReserv"
-        android:text="0"
+        android:id="@+id/tnbMaxPersonneChambreReserv"
         android:padding="8dp"
         android:textStyle="bold"
         />
@@ -133,40 +141,53 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ldateDebut"
-        android:text="@string/dateDebut"
+        android:text="@string/dateDebut_oblig"
         android:background="@color/primaire"
         android:padding="8dp"
         android:textStyle="bold"
-        />
-    <!--Pour les dates faire plutot avec les spinner de la main activity pour etre sur que on récupére une date sous un format de date -->
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/dateDebut"
-        android:hint="@string/dateDebut"
         />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ldateFin"
-        android:text="@string/dateFin"
-        android:background="@color/primaire"
-        android:padding="8dp"
-        android:textStyle="bold"
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/dateFin"
-        android:hint="@string/dateDebut"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/dateDebut"
+            android:id="@+id/dateDebutReservForm"
+            android:clickable="true"
+            android:padding="8dp"
+            android:textStyle="bold"
+            android:background="@drawable/rounded_textview"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ldateFin"
+            android:text="@string/dateFin_oblig"
+            android:background="@color/primaire"
+            android:padding="8dp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/dateFin"
+            android:id="@+id/dateFinReservForm"
+            android:clickable="true"
+            android:padding="8dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_textview"
+            />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lnbInvite"
-        android:text="@string/nbInvite"
+        android:text="@string/nbInvite_oblig"
         android:background="@color/primaire"
         android:padding="8dp"
         android:textStyle="bold"
@@ -175,25 +196,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/nbInvite"
+        android:text="0"
         android:hint="@string/nbInvite"
+        android:inputType="number"
         />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/lclient_reservation"
-            android:text="@string/client"
+            android:text="@string/client_oblig"
             android:background="@color/primaire"
             android:padding="8dp"
             android:textStyle="bold"
             />
 
-
-        <Spinner
+        <AutoCompleteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/client_spinner_reservation"
-            android:padding="2dp"
+            android:id="@+id/client_autocomplete_reserv"
+            android:hint="@string/client"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/creerClient"
+            android:id="@+id/bCreaClientReserv"
+            android:visibility="gone"
+            android:backgroundTint="@color/primaire"
             />
 
     <TextView
@@ -221,6 +252,14 @@
             android:text="@string/bAjout"
             android:id="@+id/bAjoutReserv"
             android:backgroundTint="@color/primaire"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bSupprReserv"
+            android:backgroundTint="@color/maintenance"
+            android:text="@string/suppr"
             />
 
 

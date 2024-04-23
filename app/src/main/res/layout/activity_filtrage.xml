@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Reservation.Filtrage"
+    tools:context=".View.Reservation.Filtrage"
     android:orientation="vertical"
     android:id="@+id/layoutFiltrer"
     >
@@ -15,6 +15,17 @@
         android:id="@+id/bRetoursFiltrer"
         android:text="@string/retours"
         android:backgroundTint="@color/primaire"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/chambre_liste"
+        android:id="@+id/listeChambre_filtre"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
         />
 
     <TextView

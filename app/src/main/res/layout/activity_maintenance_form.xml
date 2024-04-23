@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.Maintenance.MaintenanceForm"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bRetoursMaintenanceForm"
+        android:text="@string/retours"
+        android:backgroundTint="@color/primaire"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/obligatoireReserv"
+        android:text="@string/obligatoire"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ldateDebutMaintenance"
+        android:text="@string/dateDebut_oblig"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/dateDebut"
+        android:id="@+id/dateDebutMaintenanceForm"
+        android:clickable="true"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:background="@drawable/rounded_textview"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ldateFinMaintenance"
+        android:text="@string/dateFin_oblig"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/dateFin"
+        android:id="@+id/dateFinMaintenanceForm"
+        android:clickable="true"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_textview"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lnumChambreMaintenance"
+        android:text="@string/num_chambre_oblig"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <AutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chambre_autocomplete_maintenance"
+        android:hint="@string/num_chambre"
+        />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/creerChambre"
+        android:id="@+id/bCreaChambreMaintenance"
+        android:visibility="gone"
+        android:backgroundTint="@color/primaire"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lcommentaireMaintenance"
+        android:text="@string/commentaire"
+        android:background="@color/primaire"
+        android:padding="8dp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/commentaire_maintenance"
+        android:hint="@string/commentaire"
+        />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bAjout"
+        android:id="@+id/bAjoutMaintenance"
+        android:backgroundTint="@color/primaire"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bSupprMaintenance"
+        android:backgroundTint="@color/maintenance"
+        android:text="@string/suppr"
+        />
+
+</LinearLayout>

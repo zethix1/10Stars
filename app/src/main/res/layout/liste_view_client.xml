@@ -1,78 +1,129 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="2dp">
-
-    <!-- ImageView and View side by side -->
-    <!--<LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:src="@drawable/hotelroom"
-            android:id="@+id/hotelRoom"
-            />
-
-
-    </LinearLayout> -->
+    android:orientation="vertical"
+    android:padding="2dp"
+    >
 
     <!-- TextViews -->
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/client3"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lNomClientMenu"
+                android:text="@string/nom_menu"
+                />
 
         <TextView
             android:id="@+id/nomClientMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lPrenomClientMenu"
+                android:text="@string/prenom_menu"
+                />
+
+            <TextView
+                android:id="@+id/prenomClientMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/prenomClientMenu"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:id="@+id/lCommentaireClientMenu"
+            android:text="@string/commentaire_menu"
+            />
+
 
         <TextView
             android:id="@+id/commentaireClient"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lemailClientMenu"
+            android:text="@string/email_menu"
+            />
+
+    <TextView
+        android:id="@+id/emailClient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ltelephoneClientMenu"
+            android:text="@string/telephone_menu"
+            />
+
+    <TextView
+        android:id="@+id/telephoneClient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
 
     <!-- TextViews on the right side -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        >
 
-        <TextView
-            android:id="@+id/emailClient"
+        <!-- Button at the end -->
+        <Button
+            android:id="@+id/modificationClient"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/bModif"
+            />
 
-        <TextView
-            android:id="@+id/telephoneClient"
+        <Button
+            android:id="@+id/historiqueClient"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/bHistorique" />
 
     </LinearLayout>
 
-    <!-- Button at the end -->
-    <Button
-        android:id="@+id/modificationClient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/bModif" />
 
 </LinearLayout>
