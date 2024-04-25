@@ -54,25 +54,6 @@ public class ClientMenu extends AppCompatActivity implements View.OnClickListene
     }
 
 
-
-    public void searchClient(String query) {
-        this.list = new ArrayList<>();
-        if(!this.instance.getClientHashMap().isEmpty()) {
-            for (Map.Entry<Integer, Client> entry : this.instance.getClientHashMap().entrySet()) {
-                if(entry.getValue().getNom().contains(query)) {
-                    this.list.add(entry.getValue());
-                }
-            }
-            this.list.addAll(this.instance.getClientHashMap().values());
-        }else {
-            this.list = this.clientDao.findClientsByName(query);
-            this.arrayAdapter.clear();
-            for (Client client1 : this.list) {
-                this.arrayAdapter.add(client1);
-            }
-        }
-    }
-
     public void findClient() {
         this.list = new ArrayList<>();
         if(!this.instance.getClientHashMap().isEmpty()) {
@@ -81,9 +62,10 @@ public class ClientMenu extends AppCompatActivity implements View.OnClickListene
             this.list = this.clientDao.findAll();
         }
         this.arrayAdapter.clear();
-        this.instance.getClientHashMap().clear();
         for (Client client1 : this.list) {
-            this.instance.addToClientHashMap(client1);
+            if(!this.instance.getClientHashMap().containsValue(client1)) {
+                this.instance.addToClientHashMap(client1);
+            }
             this.arrayAdapter.add(client1);
         }
     }

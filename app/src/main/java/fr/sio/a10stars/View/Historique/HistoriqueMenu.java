@@ -56,7 +56,6 @@ public class HistoriqueMenu extends AppCompatActivity implements View.OnClickLis
         this.arrayAdapter = new AdapterDetailHistorique(this,R.layout.liste_view_historique,new ArrayList<>());
         findHistorique();
         this.listView.setAdapter(this.arrayAdapter);
-        System.out.println(this.historiqueDao.findAll());
     }
 
     public void findHistorique() {
@@ -66,12 +65,12 @@ public class HistoriqueMenu extends AppCompatActivity implements View.OnClickLis
         }else {
             this.list = this.historiqueDao.findAll();
         }
-        System.out.println(this.list);
-        this.instance.getHistoriqueHashMap().clear();
         this.arrayAdapter.clear();
         for(Historique historique : this.list) {
             this.arrayAdapter.add(historique);
-            this.instance.addToHistoriqueHashMap(historique);
+            if(!this.instance.getHistoriqueHashMap().containsValue(historique)) {
+                this.instance.addToHistoriqueHashMap(historique);
+            }
         }
     }
 

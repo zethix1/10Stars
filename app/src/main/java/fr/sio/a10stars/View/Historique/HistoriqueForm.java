@@ -119,7 +119,6 @@ public class HistoriqueForm extends AppCompatActivity implements View.OnClickLis
         } else if (v.getId() == R.id.bSupprHistorique) {
             this.historiqueDao.delete(this.instance.getHistoriqueHashMap().get(this.idHistorique));
             this.instance.removeFromHistoriqueHashMap(this.idHistorique);
-            System.out.println(this.historiqueDao.findAll());
             Toast.makeText(this,"Historique supprimé avec succée",Toast.LENGTH_SHORT).show();
             this.finish();
         }

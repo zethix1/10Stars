@@ -197,7 +197,6 @@ public class ReservationForm extends AppCompatActivity implements View.OnClickLi
 
     public void findChambre() {
         if(this.instance.getChambreHashMap().isEmpty()) {
-            this.instance.getChambreHashMap().clear();
             for(Chambre chambre1 : this.chambreDao.findAll()) {
                 this.instance.addToChambreHashMap(chambre1);
             }
@@ -250,7 +249,6 @@ public class ReservationForm extends AppCompatActivity implements View.OnClickLi
                     this.instance.getHistoriqueHashMap().clear();
                     for (Historique historique1 : this.historiqueDao.findAll()) {
                         this.instance.addToHistoriqueHashMap(historique1);
-                        System.out.println(historique1.getId());
                     }
                     Toast.makeText(this, "Reservation crée avec succée", Toast.LENGTH_SHORT).show();
                     this.finish();
@@ -270,7 +268,7 @@ public class ReservationForm extends AppCompatActivity implements View.OnClickLi
                     this.finish();
                 }
             } else if (view.getId() == R.id.bSupprReserv) {
-                if (this.instance.getHistoriqueHashMap().get(this.instance.getHistoriqueHashMap().get(this.historiqueDao.findAll().stream().filter(historique1 -> historique1.getFkReservation() == this.idReserv).collect(Collectors.toList()))) != null) {
+                if (this.instance.getHistoriqueHashMap().get(this.historiqueDao.findAll().stream().filter(historique1 -> historique1.getFkReservation() == this.idReserv).collect(Collectors.toList())) != null) {
                     this.instance.removeFromHistoriqueHashMap(this.historiqueDao.findAll().stream().filter(historique1 -> historique1.getFkReservation() == this.idReserv).collect(Collectors.toList()).get(0).getId());
                 }
                 this.reservationDao.delete(this.instance.getReservationHashMap().get(this.idReserv));

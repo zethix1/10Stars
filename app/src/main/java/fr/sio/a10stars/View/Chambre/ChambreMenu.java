@@ -90,21 +90,6 @@ public class ChambreMenu extends AppCompatActivity implements View.OnClickListen
     }
 
 
-    public void searchChambre(boolean maintenance, String query) {
-        this.list = new ArrayList<>();
-        if (!this.instance.getChambreHashMap().isEmpty()) {
-            this.list.addAll(this.instance.getChambreHashMap().values().stream()
-                    .filter(chambre -> chambre.getNum().contains(query))
-                    .collect(Collectors.toList()));
-        } else {
-            this.list = maintenance ? this.chambreDao.findChambresByNumMaintenance(query) :
-                    this.chambreDao.findChambresByNumDispoOccupe(query);
-            this.arrayAdapter.clear();
-            this.arrayAdapter.addAll(list);
-        }
-    }
-
-
     public void findChambre(boolean maintenance) {
         list = new ArrayList<>();
         if (!this.instance.getChambreHashMap().isEmpty()) {
@@ -175,7 +160,6 @@ public class ChambreMenu extends AppCompatActivity implements View.OnClickListen
                                             || LocalDate.parse(maintenance.getDateFin(),formatter).isBefore(LocalDate.now()))
                     .collect(Collectors.toList());
         }
-        this.instance.getMaintenanceHashMap().clear();
     }
 
     public void findReservation() {
@@ -198,7 +182,6 @@ public class ChambreMenu extends AppCompatActivity implements View.OnClickListen
                                             || LocalDate.parse(reservation.getDateFin(),formatter).isBefore(LocalDate.now()))
                     .collect(Collectors.toList());
         }
-        this.instance.getReservationHashMap().clear();
     }
 
 

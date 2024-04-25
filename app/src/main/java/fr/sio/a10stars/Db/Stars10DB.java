@@ -14,7 +14,7 @@ import fr.sio.a10stars.Modele.Historique.Historique;
 import fr.sio.a10stars.Modele.Maintenance.Maintenance;
 import fr.sio.a10stars.Modele.Reservation.Reservation;
 
-@Database(entities = {Client.class, Reservation.class, Chambre.class, Maintenance.class, Historique.class}, version = 11, exportSchema = false)
+@Database(entities = {Client.class, Reservation.class, Chambre.class, Maintenance.class, Historique.class}, version = 12, exportSchema = false)
 public abstract class Stars10DB extends RoomDatabase {
 
     public abstract ClientDao clientDao();

@@ -129,7 +129,6 @@ public class MaintenanceForm extends AppCompatActivity implements View.OnClickLi
     public void findChambre() {
         this.numChambre = new ArrayList<>();
         if(this.instance.getChambreHashMap().isEmpty()) {
-            this.instance.getChambreHashMap().clear();
             for(Chambre chambre1 : this.chambreDao.findAll()) {
                 this.instance.addToChambreHashMap(chambre1);
             }

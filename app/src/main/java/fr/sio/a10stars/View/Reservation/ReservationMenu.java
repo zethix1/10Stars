@@ -75,11 +75,12 @@ public class ReservationMenu extends AppCompatActivity implements View.OnClickLi
         }else {
             this.list = this.reservationDao.findAll();
         }
-        this.instance.getReservationHashMap().clear();
         this.arrayAdapter.clear();
         for(Reservation reservation1 : this.list) {
             this.arrayAdapter.add(reservation1);
-            this.instance.addToReservationHashMap(reservation1);
+            if(!this.instance.getReservationHashMap().containsValue(reservation1)) {
+                this.instance.addToReservationHashMap(reservation1);
+            }
         }
     }
 

@@ -129,7 +129,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else {
             this.list2 = this.reservationDao.findAll().stream().filter(reservation -> reservation.getDateDebut().equals(formattedDate)).collect(Collectors.toList());
         }
-        this.instance.getReservationHashMap().clear();
         findChambre();
         findClient();
         this.arrayAdapterArrive.clear();
@@ -157,7 +156,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else {
             this.list2 = this.reservationDao.findAll().stream().filter(reservation -> reservation.getDateFin().equals(formattedDate)).collect(Collectors.toList());
         }
-        this.instance.getReservationHashMap().clear();
         findChambre();
         findClient();
         this.arrayAdapterDepart.clear();
@@ -183,7 +181,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 this.list3.addAll(this.clientDao.findAll().stream().filter(client -> client.getId() == reservation.getFkClient()).collect(Collectors.toList()));
             }
         }
-        this.instance.getClientHashMap().clear();
     }
 
     public void findChambre() {
@@ -197,9 +194,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 list.addAll(this.chambreDao.findChambreDispoOccupe().stream().filter(chambre -> chambre.getId() == reservation.getFkChambre()).collect(Collectors.toList()));
             }
         }
-        this.instance.getChambreHashMap().clear();
         for (Chambre chambre1 : this.list.stream().filter(chambre -> chambre.getStatut().equals("disponible")).collect(Collectors.toList())) {
             this.list.remove(chambre1);
+            if(this.instance.getChambreHashMap().containsValue(chambre1)) {
+                this.instance.removeFromChambreHashMap(chambre1.getId());
+                chambre1.setStatut("occupe");
+                this.instance.addToChambreHashMap(chambre1);
+            }
             chambre1.setStatut("occupe");
             this.chambreDao.update(chambre1);
             this.list.add(chambre1);

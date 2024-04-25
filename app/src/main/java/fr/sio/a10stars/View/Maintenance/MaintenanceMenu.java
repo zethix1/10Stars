@@ -67,11 +67,12 @@ public class MaintenanceMenu extends AppCompatActivity implements View.OnClickLi
         }else {
             this.list = this.maintenanceDao.findAll();
         }
-        this.instance.getMaintenanceHashMap().clear();
         this.arrayAdapter.clear();
         for(Maintenance maintenance : this.list) {
             this.arrayAdapter.add(maintenance);
-            this.instance.addToMaintenanceHashMap(maintenance);
+            if(!this.instance.getMaintenanceHashMap().containsValue(maintenance)) {
+                this.instance.addToMaintenanceHashMap(maintenance);
+            }
         }
     }
 
